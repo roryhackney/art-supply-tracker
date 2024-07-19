@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Log In | Art Supply Tracker</title>
+        <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" type="image/x-icon">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </head>
+    <body>
+        <header>
+            <img src="%PUBLIC_URL%/astlogo.png" alt="Logo for Art Supply Tracker"/>
+            <h1>Art Supply Tracker</h1>
+            <nav>
+                <ul>
+                    <li>Log In</li>
+                    <li>Register</li>
+                    <li>Demo</li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>Log In</h2>
+            <form action="loginHandler.js" method="post">
+                <label for="username">Username or Email</label>
+                <input type="text" id="username" name="username"/>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"/>
+                <input type="submit"/>
+            </form>
+            
+        </main>
+        <footer>
+            <p>Art Supply Tracker is a free, open source React application developed by <a href="https://roryhackney.com">Rory Hackney</a>, &copy; 2024. Use it to track all your favorite arts and craft supplies.</p>
+            <ul>
+                <li>Log In</li>
+                <li>Register</li>
+                <li>Demo</li>
+            </ul>
+        </footer>
+    </body>
+</html>
