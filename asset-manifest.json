@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/art-supply-tracker/static/js/main.30bd939f.js",
+    "main.js": "/art-supply-tracker/static/js/main.0b301b81.js",
     "index.html": "/art-supply-tracker/index.html",
-    "main.30bd939f.js.map": "/art-supply-tracker/static/js/main.30bd939f.js.map"
+    "main.0b301b81.js.map": "/art-supply-tracker/static/js/main.0b301b81.js.map"
   },
   "entrypoints": [
-    "static/js/main.30bd939f.js"
+    "static/js/main.0b301b81.js"
   ]
 }
