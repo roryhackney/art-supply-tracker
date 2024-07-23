@@ -1,0 +1,148 @@
+:root {
+    --DARKEST: #472D30;
+    --DARK: #723D46;
+    --MEDIUM: #E26D5C;
+    --LIGHT: #C9CBA3;
+    --LIGHTEST: #FFE1A8;
+    --ERROR: #ea1f00;
+    --SUCCESS: #acff80;
+    --OFFWHITE: #fff7e8;
+    --BLACK: #000000;
+    --LINK: rgb(111, 111, 247);
+    --LINK-VISITED: rgb(147, 147, 185);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: var(--LIGHT);
+    color: black;
+}
+
+main {
+    padding-bottom: 12px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5rem;
+    font-family: "Leckerli One", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+header, footer {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--DARKEST);
+    color: var(--OFFWHITE);
+}
+
+header img {
+    max-width: 425px;
+    width: 75vw;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+header nav {
+    margin: 10px 5px;
+}
+
+header nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    font-size: 1.25rem;
+    background-color: var(--MEDIUM);
+    color: var(--BLACK);
+    padding: 5px 10px;
+    margin: 0 10px;
+    min-width: 100px;
+    border-radius: 5px;
+    border: 1px solid var(--DARKEST);
+}
+
+header nav li {
+    list-style-type: none;
+}
+
+p.headingText {
+    font-size: 1.25rem;
+    margin-top: -10px;
+}
+
+form {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: var(--LIGHTEST);
+}
+
+input {
+    display: block;
+    border-radius: 25px;
+    margin: 5px auto 0 auto;
+    height: 25px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+label {
+    display: block;
+    font-size: 1.1rem;
+}
+
+form a {
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+form .button {
+    margin: 10px auto;
+    /* border: 2px solid;
+    border-color: yellow orange red orange; */
+}
+
+form .error {
+    color: var(--ERROR);
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: var(--LINK)
+}
+
+footer a:visited {
+    color: var(--LINK-VISITED);
+}

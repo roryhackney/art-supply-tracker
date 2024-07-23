@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/art-supply-manager/static/js/main.30bd939f.js",
+    "index.html": "/art-supply-manager/index.html",
+    "main.30bd939f.js.map": "/art-supply-manager/static/js/main.30bd939f.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.30bd939f.js"
+  ]
+}
