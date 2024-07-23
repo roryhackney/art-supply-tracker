@@ -75,11 +75,11 @@ function LoginForm() {
             <label htmlFor="username">Username or Email</label>
             <input id="username" name="username" type="text" value={formData.username} onChange={handleChange}/>
             <span className="error">{errors.username || ""}</span>
-            <a href="">Forgot Username</a>
+            <a href="get-username">Forgot Username</a>
             <label htmlFor="password">Password</label>
             <input id="password" name="password" type="password" value={formData.password} onChange={handleChange}/>
             <span className="error">{errors.password || ""}</span>
-            <a href="">Forgot Password</a>
+            <a href="reset-password">Forgot Password</a>
             <button className="button" type="submit">Log In</button>
         </form>
     );
