@@ -4,10 +4,12 @@
     --MEDIUM: #E26D5C;
     --LIGHT: #C9CBA3;
     --LIGHTEST: #FFE1A8;
-    --ERROR: #ff5238;
+    --ERROR: #ea1f00;
     --SUCCESS: #acff80;
     --OFFWHITE: #fff7e8;
     --BLACK: #000000;
+    --LINK: rgb(111, 111, 247);
+    --LINK-VISITED: rgb(147, 147, 185);
 }
 
 * {
@@ -23,6 +25,10 @@ body {
     text-align: center;
     background-color: var(--LIGHT);
     color: black;
+}
+
+main {
+    padding-bottom: 12px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -123,4 +129,20 @@ form .button {
     margin: 10px auto;
     /* border: 2px solid;
     border-color: yellow orange red orange; */
+}
+
+form .error {
+    color: var(--ERROR);
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: var(--LINK)
+}
+
+footer a:visited {
+    color: var(--LINK-VISITED);
 }

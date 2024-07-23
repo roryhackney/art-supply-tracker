@@ -1,3 +1,5 @@
+import {BrowserRouter, Route, Link} from "react-router-dom";
+
 function Header(props) {
     let menu = LoginMenu();
     if(props.isLoggedIn) {
@@ -17,9 +19,9 @@ function Header(props) {
 function LoginMenu() {
     return (
         <ul>
-            <li key="1" className="button">Log In</li>
-            <li key="2" className="button">Sign Up</li>
-            <li key="3" className="button">Demo</li>
+            <li key="1" className="button"><Link to="/">Log In</Link></li>
+            <li key="2" className="button"><Link to="/register">Sign Up</Link></li>
+            <li key="3" className="button"><Link to="/demo">Demo</Link></li>
         </ul>
     );
 };
@@ -33,4 +35,4 @@ function Menu() {
     );
 };
 
-export {Header};
+export default Header;
