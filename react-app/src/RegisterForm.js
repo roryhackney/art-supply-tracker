@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import toggleVisible from './helpers';
-import {signInWithEmailAndPassword} from 'firebase/auth';
+import {createUserWithEmailAndPassword} from "firebase/auth";
 import {auth} from './firebase.js';
 import {useNavigate} from 'react-router-dom';
 
-function LoginForm() {
-    const navigate = useNavigate();
-
+function RegisterForm() {
+    //allows auto loading of another page
+    const n = useNavigate();
+    
     //React state - an object containing an email and password, initially blank
     const [formData, setFormData] = useState({
         email: '',
@@ -26,12 +27,10 @@ function LoginForm() {
     };
 
     //make sure the user entered something
-    //TODO: and the email exists
-    //TODO: and the password is a match
+    //and the password is 8+ chars long
+    //and the email includes an @ sign
     const validate = () => {
-        let errors = {};
-        
-        //if blank
+        let errors = {};        
         if (formData.email === "") {
             errors.email = "Email is required";
         } else if (formData.email.indexOf('@') < 0) {
@@ -46,29 +45,28 @@ function LoginForm() {
     }
 
     //when the form is submitted with no errors, process it
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        let err = validate();
-        if (Object.keys(err).length === 0) {
+        const errors = validate();
+        if (Object.keys(errors).length === 0) {
             console.log(`Form submitted: ${JSON.stringify(formData)}`);
-            //TODO: log the user in, pw and email are valid
-            signInWithEmailAndPassword(auth, formData.email, formData.password)
+            //TODO: create user, pw and email are valid
+            await createUserWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                navigate("/home");
                 console.log(user);
+                //redirect to login
+                n("/");
             }).catch((error) => {
-                //if the email is not in system, tell them to register
-                if (error.code === "auth/invalid-credential") {
-                    err.creds = "Invalid email or password";
+                console.log("Unable to create new account\n", error.code, error.message);
+                if (error.code === "auth/email-already-in-use") {
+                    errors.exists = <div>Email already exists<a href="/">Log In</a></div>;
                 } else {
-                    console.log("Something went wrong:", error.code);
+                    errors.exists = 'Unable to create account: ' + error.code;
                 }
-                setErrors(err);
-            });
-        } else {
-            setErrors(err);
+            })
         }
+        setErrors(errors);
     };
 
     //the actual form
@@ -77,6 +75,7 @@ function LoginForm() {
             <label htmlFor="email">Email Address</label>
             <input id="email" name="email" type="text" value={formData.email} onChange={handleChange}/>
             <span className="error">{errors.email || ""}</span>
+            <span className="error">{errors.exists || ""}</span>
             <label htmlFor="password">Password</label>
 
             <div id="outer">
@@ -88,11 +87,10 @@ function LoginForm() {
                 </div>
             </div>
             <span className="error">{errors.password || ""}</span>
-            <span className="error">{errors.creds || ""}</span>
             <a href="reset-password">Forgot Password</a>
-            <button className="button" type="submit">Log In</button>
+            <button className="button" type="submit">Sign Up</button>
         </form>
     );
 }
 
-export default LoginForm;
+export default RegisterForm;

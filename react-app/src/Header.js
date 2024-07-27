@@ -1,10 +1,15 @@
 import {Link} from "react-router-dom";
+import {useContext} from "react";
+import {UserContext} from "./App";
 
 function Header(props) {
+    let currentUser = useContext(UserContext);
+    // console.log("From header, current user:", currentUser);
     let menu = LoginMenu();
-    if(props.isLoggedIn) {
+    if(currentUser) {
        menu = Menu();
-    };
+    }
+    
     return (
         <header>
             <img src="./astlogo.png" alt="Logo for Art Supply Tracker" width="425" height="378"/>
@@ -29,8 +34,9 @@ function LoginMenu() {
 function Menu() {
     return(
         <ul>
-            <li key="4" className="button">Account</li>
-            <li key="5" className="button">My WishList</li>
+            <li key="4" className="button"><Link to="/home">Home</Link></li>
+            <li key="5" className="button"><Link to="/account">Account</Link></li>
+            <li key="6" className="button"><Link to="/wishlist">WishList</Link></li>
         </ul>
     );
 };
