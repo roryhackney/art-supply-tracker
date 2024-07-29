@@ -1,3 +1,4 @@
+//changes visibility of password field when eye icon is clicked
 function toggleVisible() {
     const field = document.getElementById("password");
     const eye = document.getElementById("toggleVisible");

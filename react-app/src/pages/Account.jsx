@@ -1,35 +1,35 @@
-import Header from "../Header";
-import {signOut, onAuthStateChanged} from "firebase/auth";
+import {signOut} from "firebase/auth";
 import {auth} from "../firebase.js";
 import {useNavigate} from "react-router-dom";
-import {useEffect} from "react";
+import React, {useContext} from "react";
+import {UserContext} from "../App.js";
 
 function Account () {
-    const navigate = useNavigate();
+    let {state, update} = useContext(UserContext);
     //if not logged in, go to login instead
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                navigate("/");
-            }
-        })
-    });
-    document.title = "Account | Art Supply Tracker";
-    return (
-        <>
-        <Header isLoggedIn={true}/>
-        <main>
+    console.log("from account", state.user);
+    const navigate = useNavigate();
+    React.useEffect(() => {if (state.user == null) navigate("/")});
+
+
+    if (state.user != null) {
+        document.title = "Account | Art Supply Tracker";
+        return (
+            <>
             <h1>Account</h1>
-            <button className="button" type="button" onClick={() => {
-                signOut(auth).then(() => {
-                    navigate("/");
-                }).catch((error) => {
-                    console.log("Unable to log out:", error.message);
-                })
-            }}>Log Out</button>
-        </main>
-        </>
-    );
+            <button className="button" type="button" onClick={
+                () => {
+                    signOut(auth).then(() => {
+                        update({user: null});
+                        navigate("/");
+                    }).catch((err) => {
+                        console.log("Unable to log out:", err.message);
+                    })
+                }
+            }>Log Out</button>
+            </>
+        );
+    }
 }
 
 export default Account;

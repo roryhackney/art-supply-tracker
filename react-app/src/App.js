@@ -1,7 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {createContext, useState, useEffect} from 'react';
-import {auth} from './firebase.js'
-import {onAuthStateChanged} from 'firebase/auth';
+import {createContext, StrictMode, useState} from 'react';
 
 //pages
 import Layout from './pages/Layout';
@@ -15,24 +13,25 @@ import Wishlist from './pages/Wishlist';
 
 import Default from './pages/Default';
 
+
 //user stuff
-export const UserContext = createContext(null);
+export const UserContext = createContext();
+//tutorial used reducer, I'm just gonna use state for now
+// const reducer = (state, pair) => ({...state, ...pair});
+
+//so when you click the links, it remembers ur user account
+//but if you manually type in / (for login route) it loses the user info
+
+//when you are logged out, it successfully redirects to login if you type in a protected route
+//when you are logged in, reloading or typing in any route, including account, home, etc loses your login
+//maybe reloading the website causes you to lose context?
 
 function App() {
-    const [myUser, setMyUser] = useState(null);
+    const [state, update] = useState({user: null});
 
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setMyUser(user);
-            } else {
-                setMyUser(null);
-            }
-        })
-    });
-    
     return (
-        <UserContext.Provider value={myUser}>
+        <StrictMode>
+        <UserContext.Provider value={{state, update}}>
             <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Layout/>}>
@@ -49,6 +48,7 @@ function App() {
                     </Routes>
             </BrowserRouter>
         </UserContext.Provider>
+        </StrictMode>
     );
 }
 

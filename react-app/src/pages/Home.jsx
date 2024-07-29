@@ -1,27 +1,19 @@
-import Header from "../Header";
-import {onAuthStateChanged} from "firebase/auth";
-import {auth} from "../firebase.js";
-import {useNavigate} from "react-router-dom";
-import {useEffect} from "react";
+import {redirect, useNavigate} from "react-router-dom";
+import React, {useContext} from "react";
+import { UserContext } from "../App.js";
 
 function Home() {
     const navigate = useNavigate();
+    let {state, update} = useContext(UserContext);
     //if not logged in, go to login instead
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                navigate("/");
-            }
-        })
-    });
+    console.log("from home", state.user);
+    React.useEffect(() => {if (state.user == null) navigate("/")});
+    console.log(state.user);
 
     document.title = "Home | Art Supply Tracker";
     return (
         <>
-        <Header isLoggedIn={true}/>
-        <main>
             <h1>Home</h1>
-        </main>
         </>
     );
 }

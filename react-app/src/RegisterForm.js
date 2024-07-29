@@ -53,8 +53,7 @@ function RegisterForm() {
             //TODO: create user, pw and email are valid
             await createUserWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user);
+                console.log(userCredential.user);
                 //redirect to login
                 n("/");
             }).catch((error) => {

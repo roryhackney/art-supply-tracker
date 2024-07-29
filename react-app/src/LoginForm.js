@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import toggleVisible from './helpers';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from './firebase.js';
 import {useNavigate} from 'react-router-dom';
+import { UserContext } from './App.js';
 
 function LoginForm() {
     const navigate = useNavigate();
+    // let context = useContext(UserContext);
+    const {state, update} = useContext(UserContext);
 
     //React state - an object containing an email and password, initially blank
     const [formData, setFormData] = useState({
@@ -25,9 +28,7 @@ function LoginForm() {
         }));
     };
 
-    //make sure the user entered something
-    //TODO: and the email exists
-    //TODO: and the password is a match
+    //make sure the user entered something valid
     const validate = () => {
         let errors = {};
         
@@ -51,18 +52,19 @@ function LoginForm() {
         let err = validate();
         if (Object.keys(err).length === 0) {
             console.log(`Form submitted: ${JSON.stringify(formData)}`);
-            //TODO: log the user in, pw and email are valid
+            //try to log the user in, pw and email are valid strings
             signInWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredential) => {
-                const user = userCredential.user;
+                //set the new user in the context state and redirect to home
+                update({user: userCredential.user});
                 navigate("/home");
-                console.log(user);
             }).catch((error) => {
-                //if the email is not in system, tell them to register
+                //bad email or password, make them log in again
+                //security practice doesn't let you tell user which is invalid, I guess
                 if (error.code === "auth/invalid-credential") {
                     err.creds = "Invalid email or password";
                 } else {
-                    console.log("Something went wrong:", error.code);
+                    console.log("Something went wrong:", error.message);
                 }
                 setErrors(err);
             });

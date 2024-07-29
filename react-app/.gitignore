@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# firebase connection stuff
+firebase.js
+.firebase/hosting.YnVpbGQ.cache
+
+# misc notes for me during development
+questions.txt
