@@ -1,5 +1,6 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {createContext, StrictMode, useState} from 'react';
+// import {createContext, StrictMode, useState} from 'react';
+import { StrictMode } from 'react';
 
 //pages
 import Layout from './pages/Layout';
@@ -15,7 +16,8 @@ import Default from './pages/Default';
 
 
 //user stuff
-export const UserContext = createContext();
+// export const UserContext = createContext();
+
 //tutorial used reducer, I'm just gonna use state for now
 // const reducer = (state, pair) => ({...state, ...pair});
 
@@ -27,11 +29,11 @@ export const UserContext = createContext();
 //maybe reloading the website causes you to lose context?
 
 function App() {
-    const [state, update] = useState({user: null});
+    // const [state, update] = useState({user: null});
 
     return (
         <StrictMode>
-        <UserContext.Provider value={{state, update}}>
+            {/* <UserContext.Provider value={{state, update}}> */}
             <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Layout/>}>
@@ -47,7 +49,7 @@ function App() {
                         </Route>
                     </Routes>
             </BrowserRouter>
-        </UserContext.Provider>
+            {/* </UserContext.Provider> */}
         </StrictMode>
     );
 }

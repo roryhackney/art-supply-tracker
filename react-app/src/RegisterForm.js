@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import toggleVisible from './helpers';
 import {createUserWithEmailAndPassword} from "firebase/auth";
 import {auth} from './firebase.js';
@@ -50,7 +50,7 @@ function RegisterForm() {
         const errors = validate();
         if (Object.keys(errors).length === 0) {
             console.log(`Form submitted: ${JSON.stringify(formData)}`);
-            //TODO: create user, pw and email are valid
+            //create user, pw and email are valid
             await createUserWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredential) => {
                 console.log(userCredential.user);

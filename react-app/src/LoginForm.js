@@ -1,14 +1,15 @@
-import React, {useContext, useState} from 'react';
+// import React, {useContext, useState} from 'react';
+import {useState} from 'react';
 import toggleVisible from './helpers';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from './firebase.js';
 import {useNavigate} from 'react-router-dom';
-import { UserContext } from './App.js';
+// import { UserContext } from './App.js';
 
 function LoginForm() {
     const navigate = useNavigate();
     // let context = useContext(UserContext);
-    const {state, update} = useContext(UserContext);
+    // const {state, update} = useContext(UserContext);
 
     //React state - an object containing an email and password, initially blank
     const [formData, setFormData] = useState({
@@ -56,7 +57,8 @@ function LoginForm() {
             signInWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredential) => {
                 //set the new user in the context state and redirect to home
-                update({user: userCredential.user});
+                // update({user: userCredential.user});
+                console.log("newly signed in:", userCredential.user);
                 navigate("/home");
             }).catch((error) => {
                 //bad email or password, make them log in again
