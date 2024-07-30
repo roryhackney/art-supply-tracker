@@ -90,6 +90,7 @@ header nav a {
     min-width: 100px;
     border-radius: 5px;
     border: 1px solid var(--DARKEST);
+    text-decoration: none;
 }
 
 header nav li {

@@ -1,18 +1,22 @@
-import React from 'react';
+import {useEffect} from 'react';
 import {auth} from '../firebase';
 import HeaderLoggedOut from '../HeaderLoggedOut';
 import HeaderLoggedIn from '../HeaderLoggedIn';
 import Footer from '../Footer';
+import { setMenu } from '../helpers';
 
 function Default() {
-    const header = <HeaderLoggedOut/>;
-    if (auth.currentUser) {
-        header = <HeaderLoggedIn/>;
-    }
+    useEffect(() => {auth.onAuthStateChanged((user) => {
+        if (user) {
+            setMenu(true);
+        } else {
+            setMenu(false);
+        }
+    })});
 
     return (
         <>
-        {header}
+        <HeaderLoggedOut/>
         <main>
             <h1>Page not found</h1>
             <a href="/home" className="button">Home</a>

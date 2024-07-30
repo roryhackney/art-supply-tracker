@@ -5,7 +5,7 @@ function HeaderLoggedIn() {
         <header>
             <img src="./astlogo.png" alt="Logo for Art Supply Tracker" width="425" height="378"/>
             <h1>Art Supply Tracker</h1>
-            <nav>
+            <nav id="nav">
                 <ul>
                     <li key="4" className="button"><Link to="/home">Home</Link></li>
                     <li key="5" className="button"><Link to="/account">Account</Link></li>
