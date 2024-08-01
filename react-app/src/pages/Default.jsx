@@ -18,7 +18,7 @@ function Default() {
         <>
         <HeaderLoggedOut/>
         <main>
-            <h1>Page not found</h1>
+            <h2>Page not found</h2>
             <a href="/home" className="button">Home</a>
         </main>
         <Footer/>

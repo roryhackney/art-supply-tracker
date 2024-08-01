@@ -100,6 +100,7 @@ header nav li {
 p.headingText {
     font-size: 1.25rem;
     margin-top: -10px;
+    padding: 0 5px;
 }
 
 form {
@@ -123,6 +124,19 @@ form input {
 label {
     display: block;
     font-size: 1.1rem;
+}
+
+div.danger {
+    background-color: var(--ERROR);
+    margin: 10px 10px 0 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+div.danger button {
+    background-color: var(--BLACK);
+    color: var(--OFFWHITE);
+    margin-top: 10px;
 }
 
 form a {

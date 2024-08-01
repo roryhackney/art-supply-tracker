@@ -1,9 +1,11 @@
 import {signOut} from "firebase/auth";
 import {auth} from "../firebase.js";
 import {useNavigate} from "react-router-dom";
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 import HeaderLoggedIn from "../HeaderLoggedIn.js";
 import Footer from '../Footer.js';
+import ConfirmDelete from "../ConfirmDelete.jsx";
+import DisplayCancel from "../DisplayCancel.jsx";
 // import React, {useContext} from "react";
 // import {UserContext} from "../App.js";
 
@@ -24,11 +26,15 @@ function Account () {
 
     // if (state.user != null) {
     document.title = "Account | Art Supply Tracker";
+    let [displayConfirmation, setDisplayConfirmation] = useState(false);
+    let [displayCancel, setDisplayCancel] = useState(false);
+
+    console.log(displayConfirmation);
     return (
         <>
         <HeaderLoggedIn/>
         <main>
-            <h1>Account</h1>
+            <h2>Account</h2>
             <button className="button" type="button" onClick={
                 () => {
                     signOut(auth).then(() => {
@@ -39,6 +45,15 @@ function Account () {
                     })
                 }
             }>Log Out</button>
+            <div className="danger">
+                <h2>Danger Zone</h2>
+                <button className="button" type="button" onClick={() => {
+                    setDisplayConfirmation(true);
+                    console.log(displayConfirmation);
+                }}>Delete Account</button>
+                <DisplayCancel shouldDisplay={displayCancel}/>
+                <ConfirmDelete shouldDisplay={displayConfirmation} setShouldDisplay={setDisplayConfirmation} setDisplayCancel={setDisplayCancel} />
+            </div>
         </main>
         <Footer />
         </>

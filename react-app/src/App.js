@@ -13,6 +13,8 @@ import Account from './pages/Account';
 import Wishlist from './pages/Wishlist';
 
 import Default from './pages/Default';
+import CompleteSignIn from './pages/CompleteSignIn';
+import EmailSignIn from './pages/EmailSignIn.jsx';
 
 
 //user stuff
@@ -40,6 +42,9 @@ function App() {
                             <Route index element={<Login/>}/>
                             <Route path="register" element={<Register/>}/>
                             <Route path="demo" element={<Demo/>}/>
+
+                            <Route path="complete-sign-in" element={<CompleteSignIn/>}/>
+                            <Route path="email-sign-in" element={<EmailSignIn/>}/>
 
                             <Route path="home" element={<Home/>}/>
                             <Route path="account" element={<Account/>}/>

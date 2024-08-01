@@ -25,7 +25,7 @@ const Wishlist = () => {
         <>
         <HeaderLoggedIn/>
         <main>
-            <h1>Wishlist</h1>
+            <h2>Wishlist</h2>
         </main>
         <Footer/>
         </>

@@ -65,6 +65,8 @@ function LoginForm() {
                 //security practice doesn't let you tell user which is invalid, I guess
                 if (error.code === "auth/invalid-credential") {
                     err.creds = "Invalid email or password";
+                } else if (error.code === "auth/quota-exceeded") {
+                    err.creds = "Active user limit exceeded. Please try to log in later.";
                 } else {
                     console.log("Something went wrong:", error.message);
                 }
@@ -81,6 +83,8 @@ function LoginForm() {
             <label htmlFor="email">Email Address</label>
             <input id="email" name="email" type="text" value={formData.email} onChange={handleChange}/>
             <span className="error">{errors.email || ""}</span>
+            <a href="email-sign-in">Email Sign In</a>
+            
             <label htmlFor="password">Password</label>
 
             <div id="outer">

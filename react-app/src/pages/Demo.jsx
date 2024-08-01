@@ -9,7 +9,7 @@ import {setMenu} from '../helpers';
 function Demo() {
     const base = (<>
         <main>
-            <h1>Demonstration</h1>
+            <h2>Demonstration</h2>
             <p className='headingText'>of the Art Supply Tracker</p>
         </main>
         <Footer/>

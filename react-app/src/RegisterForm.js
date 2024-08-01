@@ -60,7 +60,10 @@ function RegisterForm() {
                 console.log("Unable to create new account\n", error.code, error.message);
                 if (error.code === "auth/email-already-in-use") {
                     errors.exists = <div>Email already exists<a href="/">Log In</a></div>;
-                } else {
+                } else if (error.code === "auth/quota-exceeded") {
+                    error.exists = "Too many new account requests from the same IP address. Please try again in an hour.";
+                }
+                else {
                     errors.exists = 'Unable to create account: ' + error.code;
                 }
             })

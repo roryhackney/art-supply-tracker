@@ -26,7 +26,7 @@ function Home() {
         <>
             <HeaderLoggedIn/>
             <main>
-                <h1>Home</h1>
+                <h2>Home</h2>
             </main>
             <Footer/>
         </>

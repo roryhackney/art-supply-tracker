@@ -25,7 +25,7 @@ function Register() {
         <>
         <HeaderLoggedOut/>
         <main>
-            <h1>Sign Up</h1>
+            <h2>Sign Up</h2>
             <p className='headingText'>for your Art Supply Tracker</p>
             <RegisterForm/>
         </main>
